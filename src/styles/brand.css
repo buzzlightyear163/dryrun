@@ -1,0 +1,155 @@
+/* Dryrun — varumärkeslager ovanpå referensens basstilar.
+   Byt accentfärg här: allt amber går via --acc / --acc2 / --accbg. */
+:root {
+  --acc: #ffb000;
+  --acc2: #ffc94d;
+  --accbg: rgba(255, 176, 0, 0.08);
+  --accline: rgba(255, 176, 0, 0.45);
+  /* team wallets-modulen läser --accent */
+  --accent: var(--acc);
+  --accent-ink: #000;
+}
+
+::selection {
+  background: var(--acc);
+  color: #000;
+}
+:focus-visible {
+  outline-color: var(--acc);
+}
+
+/* header */
+.brand .tk {
+  color: var(--acc);
+}
+.links a.on {
+  border-color: var(--acc);
+}
+.navca:focus-within {
+  border-color: var(--accline);
+}
+.navca button:hover {
+  background: var(--acc);
+  color: #000;
+}
+.btn.w {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: #000;
+}
+.btn.w:hover {
+  background: var(--acc2);
+}
+.capill {
+  border-color: var(--acc);
+}
+.capill .ca-addr b {
+  background: var(--acc);
+}
+.xb:hover {
+  border-color: var(--acc);
+}
+
+/* live-prick */
+.ldot.on {
+  background: var(--acc);
+  animation: pulse-acc 2s infinite;
+}
+@keyframes pulse-acc {
+  0% {
+    box-shadow: 0 0 rgba(255, 176, 0, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(255, 176, 0, 0);
+  }
+  to {
+    box-shadow: 0 0 rgba(255, 176, 0, 0);
+  }
+}
+
+/* hero */
+.ckhero h2.px .q {
+  color: var(--acc);
+}
+.term:focus-within {
+  border-color: var(--accline);
+}
+.term .p {
+  color: var(--acc);
+}
+.term input {
+  caret-color: var(--acc);
+}
+.term .go:hover {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: #000;
+}
+.ckx b {
+  color: var(--acc);
+}
+.ckrail b {
+  color: var(--acc);
+}
+.lat:hover {
+  border-color: var(--accline);
+}
+.lat:hover .lo {
+  color: var(--acc);
+}
+
+/* mätaren */
+.mbar .mk {
+  background: var(--acc);
+}
+
+/* filter / segment */
+.seg button.on {
+  background: var(--acc);
+  color: #000;
+}
+.seg button.on b {
+  color: #5c4000;
+}
+.uq:focus {
+  border-color: var(--accline);
+}
+
+/* tabeller */
+.ckfeed tbody tr[data-href]:hover td:first-child {
+  box-shadow: inset 2px 0 0 var(--acc);
+}
+
+/* länkar i rapporter */
+.prose a:hover,
+.ev a:hover,
+.fe a:hover,
+.kv a:hover {
+  color: var(--acc);
+}
+
+/* statusraden */
+.sbar .dm {
+  background: var(--acc);
+}
+.sbar .demo {
+  color: var(--acc);
+  border-left: 1px solid var(--line);
+}
+
+/* docs */
+.docs .ph h3 .no {
+  color: var(--acc);
+}
+
+/* 404 */
+.nf {
+  padding: 120px 0 40px;
+}
+.nf h2.px {
+  font-size: 44px;
+}
+.nf p {
+  color: var(--mut);
+  margin: 16px 0 26px;
+}

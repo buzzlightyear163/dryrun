@@ -1,0 +1,717 @@
+{
+ "id": "Tq4mW8dLp2",
+ "kind": "site",
+ "input": "https://tidepool.example/",
+ "host": "tidepool.example",
+ "ago": 140,
+ "status": "done",
+ "stage": "final",
+ "mint": "MASi45ub7Qe4ZE36UT5G6cU4ud8Fhhe4deS4F3cwpump",
+ "sym": "TIDE",
+ "chips": [
+  {
+   "k": "site",
+   "label": "tidepool.example",
+   "href": "https://tidepool.example/"
+  },
+  {
+   "k": "coin",
+   "label": "$TIDE",
+   "href": "https://solscan.io/token/MASi45ub7Qe4ZE36UT5G6cU4ud8Fhhe4deS4F3cwpump"
+  },
+  {
+   "k": "x",
+   "label": "@demo_tidepool",
+   "href": "https://x.com/"
+  }
+ ],
+ "verdict": {
+  "verdict": "LIKELY REAL",
+  "score": 66,
+  "title": "tidepool swap aggregator",
+  "story": 69,
+  "holders": 58,
+  "holdersStamp": "OK",
+  "weights": "70 / 30",
+  "headline": "Tidepool is a working swap aggregator: the sandbox wallet connected, quoted and got a clean swap transaction. The fee it charges is six times what the site advertises.",
+  "call": "Swap works end to end in the sandbox; the routing fee is 0.6%, not the 0.1% the site claims.",
+  "eli5": "You paste a coin, it finds the best price across a few pools and builds the swap for you. That part really works. It just keeps a bigger cut than it says.",
+  "summary": "The site opened, the sandbox wallet connected through the normal wallet picker, and a 0.05 SOL swap into $TIDE produced one transaction. Dry-run on mainnet it moves exactly what the quote shows, plus a 0.0003 SOL fee to the project wallet: 0.6% of the trade, against 0.1% on the landing page. No approvals, no delegate rights, nothing that outlives the transaction. The router program is verified and the repo matches what is deployed.",
+  "watch": "Watch whether the fee line on the site gets corrected, and whether the fee wallet keeps routing into the buyback it promises."
+ },
+ "timing": {
+  "fastMs": 9800,
+  "deepMs": 84200
+ },
+ "claims": [
+  {
+   "claim": "Routes every swap across several pools for the best price.",
+   "where": "on the site",
+   "how": "Asked for a 0.05 SOL → $TIDE quote and compared the route with a direct pool quote at the same block.",
+   "result": "true",
+   "evidence": "sandbox run 2 · quote split 70/30 across two pools, 0.8% better than the single pool"
+  },
+  {
+   "claim": "Fees are 0.1% per swap.",
+   "where": "on the site",
+   "how": "Dry-ran the swap transaction on mainnet and measured what went to the fee wallet.",
+   "result": "false",
+   "evidence": "0.0003 SOL of 0.05 SOL to 6J4tmCUz5J2h6tH6fwF5Hx8W1NcTJg93anG8BH4CDLhL (0.6%)"
+  },
+  {
+   "claim": "Non-custodial: funds never leave your wallet before the swap.",
+   "where": "in the docs",
+   "how": "Read every instruction in the swap transaction for transfers, approvals and delegate rights.",
+   "result": "true",
+   "evidence": "1 transaction · no approve, no setAuthority, no delegate"
+  },
+  {
+   "claim": "Audited by a well-known firm.",
+   "where": "in the footer",
+   "how": "Followed the audit badge and searched the firm's public report list.",
+   "result": "unproven",
+   "evidence": "badge links to the landing page itself; no report found"
+  }
+ ],
+ "findings": [
+  {
+   "kind": "claim-false",
+   "title": "The fee is 0.6%, not 0.1%",
+   "detail": "The dry-run swap sent 0.0003 SOL of a 0.05 SOL trade to the project fee wallet.",
+   "evidence": "6J4tmCUz5J2h6tH6fwF5Hx8W1NcTJg93anG8BH4CDLhL",
+   "src": "Opus 5.5, hands-on",
+   "href": "https://solscan.io/account/6J4tmCUz5J2h6tH6fwF5Hx8W1NcTJg93anG8BH4CDLhL"
+  },
+  {
+   "kind": "works",
+   "title": "The swap transaction is clean",
+   "detail": "One transaction, no approvals or delegate rights, expires with its blockhash.",
+   "evidence": "sandbox run 2 · step 3",
+   "src": "Opus 5.5, hands-on"
+  },
+  {
+   "kind": "works",
+   "title": "Connect goes through the normal wallet picker",
+   "detail": "Connect → Phantom → approved. No signature was asked for on load.",
+   "evidence": "sandbox run 2 · step 2",
+   "src": "Opus 5.5, hands-on"
+  },
+  {
+   "kind": "claim-true",
+   "title": "Routing really splits across pools",
+   "detail": "The quote split 70/30 across two pools and beat the best single pool by 0.8%.",
+   "evidence": "sandbox run 2 · quote",
+   "src": "Opus 5.5, checked"
+  },
+  {
+   "kind": "works",
+   "title": "Router program is verified",
+   "detail": "The deployed program matches the public repo build.",
+   "evidence": "verified build · demo-tidepool/router",
+   "src": "read off the data"
+  },
+  {
+   "kind": "unverified",
+   "title": "Audit badge leads nowhere",
+   "detail": "The badge in the footer links back to the landing page; no report under that name.",
+   "evidence": "https://tidepool.example/",
+   "src": "Opus 5.5, web"
+  },
+  {
+   "kind": "info",
+   "title": "Creator fees go to a buyback wallet",
+   "detail": "The coin's creator fees are paid to the same wallet that collects the swap fee.",
+   "evidence": "6J4tmCUz5J2h6tH6fwF5Hx8W1NcTJg93anG8BH4CDLhL",
+   "src": "read off the data"
+  }
+ ],
+ "runs": [
+  {
+   "label": "first visit",
+   "title": "Opened the site and pressed the obvious buttons",
+   "meta": "19 s · HTTP 200",
+   "url": "https://tidepool.example/",
+   "frames": [
+    {
+     "src": "gen:tidepool.example|0",
+     "act": "open tidepool.example/",
+     "url": "https://tidepool.example/"
+    },
+    {
+     "src": "gen:tidepool.example|3",
+     "act": "click Pools",
+     "url": "https://tidepool.example/pools"
+    },
+    {
+     "src": "gen:tidepool.example|1",
+     "act": "click Launch app",
+     "url": "https://tidepool.example/swap"
+    }
+   ],
+   "meters": [
+    [
+     "requests",
+     "214"
+    ],
+    [
+     "hosts",
+     "5"
+    ],
+    [
+     "API calls",
+     "31"
+    ],
+    [
+     "websockets",
+     "1"
+    ],
+    [
+     "wallet asks",
+     "2",
+     true
+    ],
+    [
+     "buttons",
+     "3"
+    ]
+   ]
+  },
+  {
+   "label": "run 2 · auto",
+   "title": "wallet run: connect the sandbox wallet, press the main action",
+   "meta": "4 steps · 31 s",
+   "url": "https://tidepool.example/swap",
+   "frames": [
+    {
+     "src": "gen:tidepool.example|1",
+     "act": "open tidepool.example/swap",
+     "url": "https://tidepool.example/swap"
+    },
+    {
+     "src": "gen:tidepool.example|2",
+     "act": "connect the wallet",
+     "url": "https://tidepool.example/swap",
+     "wallet": 1
+    },
+    {
+     "src": "gen:tidepool.example|1",
+     "act": "type 0.05 and press Swap",
+     "url": "https://tidepool.example/swap",
+     "wallet": 1
+    },
+    {
+     "src": "gen:tidepool.example|1",
+     "act": "read the result",
+     "url": "https://tidepool.example/swap",
+     "text": "Swap submitted (simulated). You receive ~1,284.2 TIDE."
+    }
+   ]
+  }
+ ],
+ "walletTest": "connected through the site's wallet picker · main action pressed: 'Swap' · 1 transaction caught, dry-run on mainnet, nothing signed",
+ "wallet": [
+  {
+   "kind": "connect",
+   "kindLabel": "connect",
+   "chain": "solana",
+   "run": 2,
+   "step": 1,
+   "summary": "The site asked to connect. The sandbox wallet said yes.",
+   "flags": [],
+   "mine": [],
+   "receivers": [],
+   "actions": [],
+   "programs": [],
+   "frame": 4
+  },
+  {
+   "kind": "signTransaction",
+   "kindLabel": "sign transaction",
+   "chain": "solana",
+   "run": 2,
+   "step": 2,
+   "summary": "Swaps 0.05 SOL for about 1,284 $TIDE through two pools, and pays 0.0003 SOL to the project fee wallet.",
+   "flags": [],
+   "mine": [
+    [
+     "SOL",
+     -0.0503
+    ],
+    [
+     "TIDE",
+     1284.2
+    ]
+   ],
+   "receivers": [
+    {
+     "address": "RqMoYAKogiA3uvnzZhUomtZ9aqZdvut2uketznkmiF62",
+     "kind": "pool",
+     "amount": "+0.035 SOL"
+    },
+    {
+     "address": "39hQ7RvVc4h2hbkGYH1Wt5pZzb6ja5ppXHt5wHGoqEFp",
+     "kind": "pool",
+     "amount": "+0.015 SOL"
+    },
+    {
+     "address": "6J4tmCUz5J2h6tH6fwF5Hx8W1NcTJg93anG8BH4CDLhL",
+     "kind": "fee wallet",
+     "amount": "+0.0003 SOL"
+    }
+   ],
+   "actions": [
+    "set compute budget",
+    "create the $TIDE token account for the wallet",
+    "route 70% through pool A",
+    "route 30% through pool B",
+    "pay 0.0003 SOL to the fee wallet"
+   ],
+   "programs": [
+    "Compute Budget",
+    "Associated Token",
+    "Tidepool router",
+    "pool program"
+   ],
+   "units": 184220,
+   "frame": 5
+  }
+ ],
+ "parts": [
+  {
+   "name": "Claims",
+   "status": "works",
+   "text": "Aggregator that does route across pools; the fee claim is wrong",
+   "bullets": [
+    {
+     "t": "Fee is 0.6%, not 0.1%",
+     "bad": true
+    },
+    {
+     "t": "Audit badge leads nowhere",
+     "bad": true
+    },
+    {
+     "t": "Routing across pools is real",
+     "bad": false
+    },
+    {
+     "t": "Non-custodial swap confirmed",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Website",
+   "status": "works",
+   "text": "Fast app with a working quote and swap flow",
+   "bullets": [
+    {
+     "t": "Live quotes refresh every few seconds",
+     "bad": false
+    },
+    {
+     "t": "Pools page loads real pool data",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Wallet flow",
+   "status": "works",
+   "text": "Normal connect, one clean transaction per swap",
+   "bullets": [
+    {
+     "t": "No approvals or delegate rights",
+     "bad": false
+    },
+    {
+     "t": "Transaction expires with its blockhash",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Code",
+   "status": "works",
+   "text": "Public repo; the deployed router matches a verified build",
+   "bullets": [
+    {
+     "t": "Verified build",
+     "bad": false
+    },
+    {
+     "t": "No tests for the fee path",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Token",
+   "status": "works",
+   "text": "$TIDE: mint and freeze revoked, liquidity on two pools",
+   "bullets": [
+    {
+     "t": "Mint authority revoked",
+     "bad": false
+    },
+    {
+     "t": "Freeze authority revoked",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Fees",
+   "status": "risk",
+   "text": "Swap fee and creator fees land in one project wallet",
+   "bullets": [
+    {
+     "t": "Fee charged is 6x the advertised rate",
+     "bad": true
+    },
+    {
+     "t": "Buyback promised, not seen yet",
+     "bad": true
+    },
+    {
+     "t": "Fee wallet is public",
+     "bad": false
+    }
+   ],
+   "hook": true
+  },
+  {
+   "name": "Team wallets",
+   "status": "works",
+   "text": "Dev holds 2.1% and has not sold",
+   "bullets": [
+    {
+     "t": "Dev funded from an exchange 40 days ago",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Team and reach",
+   "status": "unproven",
+   "text": "Small X account, active repo, no named team",
+   "bullets": [
+    {
+     "t": "No named team",
+     "bad": true
+    },
+    {
+     "t": "Repo commits most days",
+     "bad": false
+    }
+   ],
+   "hook": false
+  }
+ ],
+ "catchLine": {
+  "k": "the catch · Fees",
+  "text": "The site says 0.1% per swap. The dry-run transaction pays 0.6% to the project wallet."
+ },
+ "holders": {
+  "meters": [
+   [
+    "locked",
+    "0.0%"
+   ],
+   [
+    "locked by the dev",
+    "0.0%"
+   ],
+   [
+    "top 10 wallets",
+    "19.4%"
+   ]
+  ],
+  "bars": [
+   {
+    "pct": 38.2,
+    "pool": true,
+    "label": "RqMo…iF62"
+   },
+   {
+    "pct": 2.6,
+    "label": "iWYw…aKWW"
+   },
+   {
+    "pct": 2.4,
+    "label": "Wr8z…zyYS"
+   },
+   {
+    "pct": 2.1,
+    "label": "2B1Y…qJw4"
+   },
+   {
+    "pct": 2.0,
+    "label": "J74v…Y4c9"
+   },
+   {
+    "pct": 1.9,
+    "label": "BXTN…6CNc"
+   },
+   {
+    "pct": 1.8,
+    "label": "6MGQ…RSiV"
+   },
+   {
+    "pct": 1.6,
+    "label": "ULwu…W6cr"
+   },
+   {
+    "pct": 1.5,
+    "label": "31s9…GXaG"
+   },
+   {
+    "pct": 1.4,
+    "label": "cG2T…YDLr"
+   },
+   {
+    "pct": 1.3,
+    "label": "uDFW…86BN"
+   },
+   {
+    "pct": 1.2,
+    "label": "DCia…DQbV"
+   },
+   {
+    "pct": 1.1,
+    "label": "DMQp…1oqf"
+   },
+   {
+    "pct": 1.1,
+    "label": "th52…DSqB"
+   },
+   {
+    "pct": 1.0,
+    "label": "GT5i…vKKJ"
+   },
+   {
+    "pct": 0.9,
+    "label": "dJQH…3yKF"
+   }
+  ]
+ },
+ "steps": [
+  {
+   "t": 0,
+   "lane": "base",
+   "name": "Input (site)",
+   "found": "tidepool.example",
+   "status": "ok"
+  },
+  {
+   "t": 300,
+   "lane": "base",
+   "name": "Read the site",
+   "found": "title, 3 links, wallet adapter found",
+   "status": "ok"
+  },
+  {
+   "t": 400,
+   "lane": "base",
+   "name": "Domain records",
+   "found": "registered 61 days ago · Cloudflare",
+   "status": "ok"
+  },
+  {
+   "t": 500,
+   "lane": "base",
+   "name": "Coin on chain (launch records + mint account)",
+   "found": "$TIDE · 1,912 holders · top 10 19%",
+   "status": "ok"
+  },
+  {
+   "t": 1900,
+   "lane": "base",
+   "name": "Public surface: scripts, addresses, programs",
+   "found": "14 scripts · 3 addresses · 1 program",
+   "status": "ok"
+  },
+  {
+   "t": 9800,
+   "lane": "base",
+   "name": "First read: claims + a first verdict",
+   "found": "4 claims to check · first call LIKELY REAL 62",
+   "status": "ok"
+  },
+  {
+   "t": 10200,
+   "lane": "hands",
+   "name": "Sandbox browser: first visit",
+   "found": "3 buttons pressed · 214 requests",
+   "status": "ok"
+  },
+  {
+   "t": 12400,
+   "lane": "web",
+   "name": "Web search",
+   "found": "tidepool aggregator audit",
+   "status": "ok"
+  },
+  {
+   "t": 19800,
+   "lane": "web",
+   "name": "Fetched the audit badge",
+   "found": "links back to the landing page",
+   "status": "warn"
+  },
+  {
+   "t": 26300,
+   "lane": "hands",
+   "name": "Wallet run: connect",
+   "found": "connected via Phantom",
+   "status": "ok"
+  },
+  {
+   "t": 33100,
+   "lane": "hands",
+   "name": "Wallet run: swap 0.05 SOL",
+   "found": "1 transaction caught",
+   "status": "ok"
+  },
+  {
+   "t": 34800,
+   "lane": "hands",
+   "name": "Dry-run on mainnet",
+   "found": "ok · 184,220 compute units · 0.0003 SOL fee",
+   "status": "ok"
+  },
+  {
+   "t": 41700,
+   "lane": "base",
+   "name": "Team wallets",
+   "found": "2 wallets · no shared funder",
+   "status": "ok"
+  },
+  {
+   "t": 62500,
+   "lane": "base",
+   "name": "Teardown: the project part by part",
+   "found": "Claims: works · Fees: risky · Code: works",
+   "status": "ok"
+  },
+  {
+   "t": 84200,
+   "lane": "base",
+   "name": "Final verdict",
+   "found": "LIKELY REAL 66 (story 69, holders 58 OK)",
+   "status": "ok"
+  }
+ ],
+ "side": {
+  "coin": {
+   "stamp": "OK",
+   "score": 58,
+   "line": "1,912 holders, top 10 hold 19%, insiders 2.1%, 34 days old",
+   "kv": [
+    [
+     "coin",
+     "$TIDE",
+     "https://solscan.io/token/MASi45ub7Qe4ZE36UT5G6cU4ud8Fhhe4deS4F3cwpump"
+    ],
+    [
+     "launched",
+     "34 days ago"
+    ],
+    [
+     "holders",
+     "1,912"
+    ],
+    [
+     "top 10 hold",
+     "19.4%"
+    ],
+    [
+     "bundle",
+     "0.0%"
+    ],
+    [
+     "market cap",
+     "$412K"
+    ],
+    [
+     "bonded",
+     "yes"
+    ],
+    [
+     "dev wallet",
+     "5jGU…PM6o"
+    ],
+    [
+     "mint / freeze",
+     "mint off · freeze off"
+    ]
+   ],
+   "why": [
+    [
+     4,
+     "spread-out holders for its age"
+    ],
+    [
+     -3,
+     "fee wallet also collects creator fees"
+    ]
+   ]
+  },
+  "who": [
+   [
+    "site",
+    "tidepool.example",
+    "https://tidepool.example/"
+   ],
+   [
+    "answer",
+    "HTTP 200"
+   ],
+   [
+    "registered",
+    "61 days ago · Cloudflare"
+   ],
+   [
+    "X account",
+    "@demo_tidepool",
+    "https://x.com/"
+   ]
+  ],
+  "check": [
+   [
+    "opened",
+    "today"
+   ],
+   [
+    "first verdict",
+    "10 s"
+   ],
+   [
+    "finished",
+    "1 min 24 s"
+   ],
+   [
+    "hands-on",
+    "2 visits · 2 wallet requests"
+   ],
+   [
+    "web",
+    "3 searches · 2 pages"
+   ],
+   [
+    "mode",
+    "demo data"
+   ],
+   [
+    "input",
+    "https://tidepool.example/"
+   ]
+  ]
+ }
+}

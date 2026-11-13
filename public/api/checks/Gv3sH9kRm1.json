@@ -1,0 +1,460 @@
+{
+ "id": "Gv3sH9kRm1",
+ "kind": "site",
+ "input": "https://gridvault.example/claim",
+ "host": "gridvault.example",
+ "ago": 900,
+ "status": "done",
+ "stage": "final",
+ "chips": [
+  {
+   "k": "site",
+   "label": "gridvault.example/claim",
+   "href": "https://gridvault.example/claim"
+  }
+ ],
+ "verdict": {
+  "verdict": "SCAM",
+  "score": 3,
+  "title": "gridvault staking claim",
+  "headline": "Gridvault promises a staking airdrop. Pressing \"Claim\" builds a transaction that hands the wallet's token accounts to a stranger. The dry run caught it before anything was signed.",
+  "call": "The 'claim' button asks the wallet to hand every token account to a stranger. Drain caught in the dry run.",
+  "eli5": "The site says you have free tokens waiting. If you press the button and sign, someone else gets control of the tokens you already have.",
+  "summary": "The sandbox browser opened the claim page and connected the sandbox wallet. The page showed a fake \"1,250 GRID claimable\" balance for an address it had never seen. Pressing Claim produced one transaction. Dry-run on mainnet, it moves nothing at once but sets a stranger as owner of two token accounts and as delegate on a third: after that, the stranger can empty them at any time. The domain is 4 days old and copies the layout of a staking dashboard.",
+  "watch": "Do not sign anything on this site. If you already did, move what is left to a fresh wallet."
+ },
+ "timing": {
+  "fastMs": 7300,
+  "deepMs": 52800
+ },
+ "claims": [
+  {
+   "claim": "Connected wallets have staking rewards to claim.",
+   "where": "on the site",
+   "how": "Connected a fresh sandbox wallet that never staked anything and looked at the balance the site showed.",
+   "result": "false",
+   "evidence": "sandbox run 2 · step 2 · 1,250 GRID \"claimable\" for an empty wallet"
+  },
+  {
+   "claim": "Claiming is free and only receives tokens.",
+   "where": "on the site",
+   "how": "Pressed Claim and dry-ran the transaction it asked the wallet to sign.",
+   "result": "false",
+   "evidence": "sandbox run 2 · step 3 · setAuthority ×2, approve ×1"
+  },
+  {
+   "claim": "Gridvault is an established staking protocol.",
+   "where": "on the site",
+   "how": "Checked the domain age and searched for the protocol and its programs.",
+   "result": "false",
+   "evidence": "domain registered 4 days ago · no program found"
+  }
+ ],
+ "findings": [
+  {
+   "kind": "risk",
+   "title": "The claim transaction hands your token accounts to a stranger",
+   "detail": "Two setAuthority instructions make noh9…cMG3 the owner of the wallet's token accounts; one approve gives it unlimited delegate rights on a third.",
+   "evidence": "noh9SP4v915hpyHUB46jvRxZjKfGmK3WCBJV1HQNcMG3",
+   "src": "Opus 5.5, hands-on",
+   "href": "https://solscan.io/account/noh9SP4v915hpyHUB46jvRxZjKfGmK3WCBJV1HQNcMG3"
+  },
+  {
+   "kind": "claim-false",
+   "title": "The \"claimable\" balance is invented",
+   "detail": "A brand new sandbox wallet with no history was shown 1,250 GRID to claim.",
+   "evidence": "sandbox run 2 · step 2",
+   "src": "Opus 5.5, hands-on"
+  },
+  {
+   "kind": "risk",
+   "title": "The receiving wallet already took tokens from 38 other wallets",
+   "detail": "The same address became owner of token accounts in 38 other transactions this week.",
+   "evidence": "noh9SP4v915hpyHUB46jvRxZjKfGmK3WCBJV1HQNcMG3",
+   "src": "chain records"
+  },
+  {
+   "kind": "fails",
+   "title": "No staking program exists",
+   "detail": "No program address on the site, in the scripts or in the transactions.",
+   "evidence": "public surface",
+   "src": "read off the data"
+  },
+  {
+   "kind": "info",
+   "title": "Domain is 4 days old",
+   "detail": "Registered 4 days ago behind a privacy proxy.",
+   "evidence": "domain records",
+   "src": "public surface"
+  }
+ ],
+ "runs": [
+  {
+   "label": "first visit",
+   "title": "Opened the site and pressed the obvious buttons",
+   "meta": "12 s · HTTP 200",
+   "url": "https://gridvault.example/claim",
+   "frames": [
+    {
+     "src": "gen:gridvault.example|3",
+     "act": "open gridvault.example/claim",
+     "url": "https://gridvault.example/claim"
+    },
+    {
+     "src": "gen:gridvault.example|2",
+     "act": "click Connect wallet",
+     "url": "https://gridvault.example/claim",
+     "wallet": 1
+    }
+   ],
+   "meters": [
+    [
+     "requests",
+     "61"
+    ],
+    [
+     "hosts",
+     "3"
+    ],
+    [
+     "API calls",
+     "4"
+    ],
+    [
+     "websockets",
+     "0"
+    ],
+    [
+     "wallet asks",
+     "3",
+     true
+    ],
+    [
+     "buttons",
+     "2"
+    ]
+   ]
+  },
+  {
+   "label": "run 2 · auto",
+   "title": "wallet run: connect the sandbox wallet, press the main action",
+   "meta": "3 steps · 22 s",
+   "url": "https://gridvault.example/claim",
+   "frames": [
+    {
+     "src": "gen:gridvault.example|3",
+     "act": "open gridvault.example/claim",
+     "url": "https://gridvault.example/claim"
+    },
+    {
+     "src": "gen:gridvault.example|2",
+     "act": "connect the wallet",
+     "url": "https://gridvault.example/claim",
+     "wallet": 1
+    },
+    {
+     "src": "gen:gridvault.example|4",
+     "act": "press Claim 1,250 GRID",
+     "url": "https://gridvault.example/claim",
+     "wallet": 1,
+     "red": true,
+     "text": "Confirm claim: 1,250 GRID"
+    }
+   ]
+  }
+ ],
+ "walletTest": "connected through the site's wallet picker · main action pressed: 'Claim' · 1 transaction caught, dry-run on mainnet: red flags",
+ "wallet": [
+  {
+   "kind": "connect",
+   "kindLabel": "connect",
+   "chain": "solana",
+   "run": 2,
+   "step": 1,
+   "summary": "The site asked to connect. The sandbox wallet said yes.",
+   "flags": [],
+   "mine": [],
+   "receivers": [],
+   "actions": [],
+   "programs": [],
+   "frame": 3
+  },
+  {
+   "kind": "signTransaction",
+   "kindLabel": "sign transaction",
+   "chain": "solana",
+   "run": 2,
+   "step": 2,
+   "summary": "Nothing moves now, but the wallet's USDC and two other token accounts are handed to noh9…cMG3: a drain set up for later.",
+   "flags": [
+    "setAuthority: a stranger becomes owner of your token account (×2)",
+    "approve: unlimited delegate on your USDC account",
+    "no tokens are received, whatever the page says"
+   ],
+   "mine": [],
+   "receivers": [
+    {
+     "address": "noh9SP4v915hpyHUB46jvRxZjKfGmK3WCBJV1HQNcMG3",
+     "kind": "new owner",
+     "amount": "owner of 2 token accounts"
+    }
+   ],
+   "actions": [
+    "set compute budget",
+    "setAuthority: owner of token account 1 → stranger",
+    "setAuthority: owner of token account 2 → stranger",
+    "approve: USDC account, amount u64::MAX, delegate → stranger"
+   ],
+   "programs": [
+    "Compute Budget",
+    "Token Program"
+   ],
+   "units": 21400,
+   "frame": 4
+  }
+ ],
+ "parts": [
+  {
+   "name": "Claims",
+   "status": "broken",
+   "text": "An airdrop that does not exist, used as bait",
+   "bullets": [
+    {
+     "t": "Claimable balance is invented",
+     "bad": true
+    },
+    {
+     "t": "No staking protocol behind it",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Website",
+   "status": "broken",
+   "text": "A copied dashboard layout on a 4-day-old domain",
+   "bullets": [
+    {
+     "t": "Domain 4 days old",
+     "bad": true
+    },
+    {
+     "t": "Layout copied from a known dashboard",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Wallet flow",
+   "status": "broken",
+   "text": "Claim hands your token accounts to a stranger",
+   "bullets": [
+    {
+     "t": "setAuthority ×2 to an unknown wallet",
+     "bad": true
+    },
+    {
+     "t": "Unlimited approve on USDC",
+     "bad": true
+    }
+   ],
+   "hook": true
+  },
+  {
+   "name": "Code",
+   "status": "n/a",
+   "text": "No repo, no program",
+   "bullets": [
+    {
+     "t": "Nothing on chain to verify",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Token",
+   "status": "n/a",
+   "text": "No coin: \"GRID\" exists only on the page",
+   "bullets": [],
+   "hook": false
+  },
+  {
+   "name": "Fees",
+   "status": "n/a",
+   "text": "No fees: the site takes the whole wallet instead",
+   "bullets": [],
+   "hook": false
+  },
+  {
+   "name": "Team wallets",
+   "status": "risk",
+   "text": "The receiving wallet has done this 38 times this week",
+   "bullets": [
+    {
+     "t": "38 other takeovers in 7 days",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Team and reach",
+   "status": "risk",
+   "text": "No team, no X account, reached through replies",
+   "bullets": [
+    {
+     "t": "No X account linked",
+     "bad": true
+    }
+   ],
+   "hook": false
+  }
+ ],
+ "catchLine": {
+  "k": "the catch · Wallet flow",
+  "text": "\"Claim\" makes a stranger the owner of your token accounts. Nothing leaves at once, so most wallets show it as harmless."
+ },
+ "steps": [
+  {
+   "t": 0,
+   "lane": "base",
+   "name": "Input (site)",
+   "found": "gridvault.example/claim",
+   "status": "ok"
+  },
+  {
+   "t": 250,
+   "lane": "base",
+   "name": "Read the site",
+   "found": "title, 1 form, wallet adapter found",
+   "status": "ok"
+  },
+  {
+   "t": 300,
+   "lane": "base",
+   "name": "Domain records",
+   "found": "registered 4 days ago · privacy proxy",
+   "status": "warn"
+  },
+  {
+   "t": 1600,
+   "lane": "base",
+   "name": "Public surface: scripts, addresses, programs",
+   "found": "6 scripts · 1 address · 0 programs",
+   "status": "ok"
+  },
+  {
+   "t": 7300,
+   "lane": "base",
+   "name": "First read: claims + a first verdict",
+   "found": "3 claims to check · first call LIKELY LARP 20",
+   "status": "ok"
+  },
+  {
+   "t": 7800,
+   "lane": "hands",
+   "name": "Sandbox browser: first visit",
+   "found": "2 buttons pressed · 3 wallet asks",
+   "status": "ok"
+  },
+  {
+   "t": 18200,
+   "lane": "hands",
+   "name": "Wallet run: connect",
+   "found": "connected via Phantom",
+   "status": "ok"
+  },
+  {
+   "t": 24600,
+   "lane": "hands",
+   "name": "Wallet run: press Claim",
+   "found": "1 transaction caught",
+   "status": "ok"
+  },
+  {
+   "t": 25900,
+   "lane": "hands",
+   "name": "Dry-run on mainnet",
+   "found": "setAuthority ×2 · approve ×1 · red flags",
+   "status": "bad"
+  },
+  {
+   "t": 31000,
+   "lane": "web",
+   "name": "Web search",
+   "found": "gridvault staking protocol",
+   "status": "ok"
+  },
+  {
+   "t": 33800,
+   "lane": "base",
+   "name": "Receiving wallet history",
+   "found": "38 takeovers in 7 days",
+   "status": "bad"
+  },
+  {
+   "t": 41200,
+   "lane": "base",
+   "name": "Teardown: the project part by part",
+   "found": "Wallet flow: broken · Claims: broken",
+   "status": "ok"
+  },
+  {
+   "t": 52800,
+   "lane": "base",
+   "name": "Final verdict",
+   "found": "SCAM 3",
+   "status": "ok"
+  }
+ ],
+ "side": {
+  "who": [
+   [
+    "site",
+    "gridvault.example/claim",
+    "https://gridvault.example/claim"
+   ],
+   [
+    "answer",
+    "HTTP 200"
+   ],
+   [
+    "registered",
+    "4 days ago · privacy proxy"
+   ]
+  ],
+  "check": [
+   [
+    "opened",
+    "today"
+   ],
+   [
+    "first verdict",
+    "7 s"
+   ],
+   [
+    "finished",
+    "53 s"
+   ],
+   [
+    "hands-on",
+    "2 visits · 4 wallet requests"
+   ],
+   [
+    "web",
+    "1 search · 0 pages"
+   ],
+   [
+    "mode",
+    "demo data"
+   ],
+   [
+    "input",
+    "https://gridvault.example/claim"
+   ]
+  ]
+ }
+}

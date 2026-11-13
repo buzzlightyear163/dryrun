@@ -1,0 +1,772 @@
+{
+ "id": "Bk7rZ2xNq9",
+ "kind": "coin",
+ "input": "9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump",
+ "host": "$BRISK",
+ "ago": 420,
+ "status": "done",
+ "stage": "final",
+ "mint": "9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump",
+ "sym": "BRISK",
+ "chips": [
+  {
+   "label": "the post",
+   "href": "https://x.com/",
+   "post": true
+  },
+  {
+   "k": "site",
+   "label": "brisk.example",
+   "href": "https://brisk.example/"
+  },
+  {
+   "k": "coin",
+   "label": "$BRISK",
+   "href": "https://solscan.io/token/9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump"
+  },
+  {
+   "k": "x",
+   "label": "@demo_briskagent",
+   "href": "https://x.com/"
+  }
+ ],
+ "verdict": {
+  "verdict": "LIKELY LARP",
+  "score": 24,
+  "title": "brisk ai agent coin",
+  "story": 18,
+  "holders": 41,
+  "holdersStamp": "SKETCHY",
+  "weights": "60 / 40",
+  "cap": "an \"AI agent\" with no agent anywhere on the site or in the code: capped at LIKELY LARP",
+  "headline": "Brisk says an AI agent trades for holders. The site is a static page with a typing animation, there is no code, and the dev sold his whole bag 20 seconds after launch.",
+  "call": "The 'AI agent' is a static page; the dev sold 5.1% in 20 s and a bundle wallet still holds 7.4%.",
+  "eli5": "The coin says a robot trades for you. There is no robot: the website just pretends to type. The person who made the coin sold right away.",
+  "summary": "The post and the site describe an autonomous trading agent that shares profits with holders. The sandbox browser found a single static page: the \"live trades\" panel loops the same six lines on every load and no request leaves the page. The linked GitHub repo is empty. On chain, the dev bought 5.1% in the create slot and sold all of it 20 seconds later; a second wallet bought 9.0% in the same slot and still holds 7.4%. Mint and freeze are revoked.",
+  "watch": "Watch whether bundle wallet euza…yc4G sells the 7.4% it still holds."
+ },
+ "timing": {
+  "fastMs": 8400,
+  "deepMs": 61900
+ },
+ "claims": [
+  {
+   "claim": "An AI agent trades the treasury and shares profits with holders.",
+   "where": "in the post",
+   "how": "Opened the site in the sandbox browser, watched the network for 60 s and looked for any program or wallet the agent would use.",
+   "result": "false",
+   "evidence": "sandbox run 1 · 0 API calls · the trade panel loops a hard-coded list"
+  },
+  {
+   "claim": "Agent code is open source.",
+   "where": "on the site",
+   "how": "Followed the GitHub link and read the repo.",
+   "result": "false",
+   "evidence": "repo has a README only, 1 commit"
+  },
+  {
+   "claim": "Fair launch, no team allocation.",
+   "where": "in the post",
+   "how": "Read the launch records for the create slot.",
+   "result": "false",
+   "evidence": "dev ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj and euzaTuyZ9bAaZ2xVrCf1rtACAXgo8c4MkaacXsr7yc4G bought 14.1% in the create slot"
+  }
+ ],
+ "findings": [
+  {
+   "kind": "claim-false",
+   "title": "There is no agent",
+   "detail": "The \"live trades\" panel is a fixed list of six fake trades that repeats on every page load. No request leaves the page.",
+   "evidence": "sandbox run 1 · network log",
+   "src": "Opus 5.5, hands-on"
+  },
+  {
+   "kind": "risk",
+   "title": "The dev sold 5.1% of the supply 20 seconds after launch",
+   "detail": "Dev ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj bought 5.1% for 1.62 SOL and sold all of it for 1.98 SOL.",
+   "evidence": "ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj 84DfueD5QZxCVfHrrj17hfngPE3QNA3EH3foiEu1uMTkQCgL5E3sYcX5T7sSjcAhb6iBSmJTKjLT4LpdyPTT2xrt",
+   "src": "team wallets",
+   "href": "https://solscan.io/account/ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj"
+  },
+  {
+   "kind": "risk",
+   "title": "1 wallet bought with the dev at launch: 9.0% of the supply, 7.4% still held",
+   "detail": "It paid 2.9 SOL and has taken out 0.6 SOL so far.",
+   "evidence": "euzaTuyZ9bAaZ2xVrCf1rtACAXgo8c4MkaacXsr7yc4G",
+   "src": "team wallets"
+  },
+  {
+   "kind": "claim-false",
+   "title": "The repo is empty",
+   "detail": "One commit with a README; no agent code, no config, no history.",
+   "evidence": "https://github.com/",
+   "src": "Opus 5.5, checked"
+  },
+  {
+   "kind": "fails",
+   "title": "The site has no working button",
+   "detail": "Both buttons scroll the page; nothing asks a wallet to connect.",
+   "evidence": "sandbox run 1 · steps 2-3",
+   "src": "Opus 5.5, hands-on"
+  },
+  {
+   "kind": "works",
+   "title": "Mint and freeze authority revoked",
+   "detail": "No wallet can print more or freeze holders.",
+   "evidence": "9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump",
+   "src": "read off the data",
+   "href": "https://solscan.io/token/9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump"
+  },
+  {
+   "kind": "info",
+   "title": "Creator fees go to another wallet",
+   "detail": "The coin's creator fees are paid to DJ3r…8SVM, not the dev wallet.",
+   "evidence": "DJ3r7ZVc2qz5VMgZfZDmJVZbtXZGmayyHczDvV9T8SVM",
+   "src": "read off the data"
+  },
+  {
+   "kind": "info",
+   "title": "Dev launched 11 coins",
+   "detail": "11 coins from this wallet in 30 days, 0 bonded.",
+   "evidence": "ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj",
+   "src": "coin records"
+  }
+ ],
+ "runs": [
+  {
+   "label": "first visit",
+   "title": "Opened the site and pressed the obvious buttons",
+   "meta": "14 s · HTTP 200",
+   "url": "https://brisk.example/",
+   "frames": [
+    {
+     "src": "gen:brisk.example|0",
+     "act": "open brisk.example/",
+     "url": "https://brisk.example/"
+    },
+    {
+     "src": "gen:brisk.example|3",
+     "act": "click Live trades",
+     "url": "https://brisk.example/#trades",
+     "text": "The same six trades repeat on every load."
+    },
+    {
+     "src": "gen:brisk.example|0",
+     "act": "click Launch agent",
+     "url": "https://brisk.example/",
+     "err": "the page only scrolled"
+    }
+   ],
+   "meters": [
+    [
+     "requests",
+     "38"
+    ],
+    [
+     "hosts",
+     "2"
+    ],
+    [
+     "API calls",
+     "0"
+    ],
+    [
+     "websockets",
+     "0"
+    ],
+    [
+     "wallet asks",
+     "0"
+    ],
+    [
+     "buttons",
+     "2"
+    ]
+   ]
+  }
+ ],
+ "walletTest": "no wallet was ever asked to connect (pressed 'Launch agent'; the page only scrolled) · no transaction reached the wallet",
+ "wallet": [],
+ "walletEmpty": {
+  "text": "Nothing asked the sandbox wallet to connect or sign. What was tried:",
+  "tried": [
+   "First visit: opened brisk.example/ and pressed \"Live trades\", \"Launch agent\""
+  ]
+ },
+ "parts": [
+  {
+   "name": "Claims",
+   "status": "broken",
+   "text": "An AI trading agent that does not exist",
+   "bullets": [
+    {
+     "t": "No agent on the site or in the code",
+     "bad": true
+    },
+    {
+     "t": "\"Fair launch\" is false: 14.1% bought in the create slot",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Website",
+   "status": "broken",
+   "text": "A single static page with a fake trade feed",
+   "bullets": [
+    {
+     "t": "The trade panel is hard-coded",
+     "bad": true
+    },
+    {
+     "t": "No button does anything",
+     "bad": true
+    },
+    {
+     "t": "Loads fast, HTTPS, 2 hosts",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Wallet flow",
+   "status": "n/a",
+   "text": "No wallet flow: nothing asks to connect",
+   "bullets": [],
+   "hook": false
+  },
+  {
+   "name": "Code",
+   "status": "broken",
+   "text": "Empty repo",
+   "bullets": [
+    {
+     "t": "1 commit, README only",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Token",
+   "status": "risk",
+   "text": "Mint and freeze revoked, but one wallet holds 7.4% from the create slot",
+   "bullets": [
+    {
+     "t": "7.4% held by a launch-slot wallet",
+     "bad": true
+    },
+    {
+     "t": "Mint authority revoked",
+     "bad": false
+    },
+    {
+     "t": "Freeze authority revoked",
+     "bad": false
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Fees",
+   "status": "unproven",
+   "text": "Creator fees go to a separate wallet with no stated use",
+   "bullets": [
+    {
+     "t": "No treasury or buyback plan",
+     "bad": true
+    }
+   ],
+   "hook": false
+  },
+  {
+   "name": "Team wallets",
+   "status": "risk",
+   "text": "Dev sold his whole buy in 20 seconds",
+   "bullets": [
+    {
+     "t": "Sold 100% of the dev buy",
+     "bad": true
+    },
+    {
+     "t": "11 launches, 0 bonded",
+     "bad": true
+    }
+   ],
+   "hook": true
+  },
+  {
+   "name": "Team and reach",
+   "status": "risk",
+   "text": "Fresh X account, no named team",
+   "bullets": [
+    {
+     "t": "Account is 9 days old",
+     "bad": true
+    }
+   ],
+   "hook": false
+  }
+ ],
+ "catchLine": {
+  "k": "the catch · Team wallets",
+  "text": "A serial launcher with 11 coins and none bonded sold his whole 5.1% buy 20 seconds after launch, while a linked wallet still holds 7.4%."
+ },
+ "holders": {
+  "meters": [
+   [
+    "locked",
+    "0.0%"
+   ],
+   [
+    "locked by the dev",
+    "0.0%"
+   ],
+   [
+    "top 10 wallets",
+    "28.9%"
+   ]
+  ],
+  "bars": [
+   {
+    "pct": 46.8,
+    "pool": true,
+    "label": "pump.fun bonding curve"
+   },
+   {
+    "pct": 7.4,
+    "label": "euza…yc4G"
+   },
+   {
+    "pct": 3.1,
+    "label": "QiDS…BaB5"
+   },
+   {
+    "pct": 2.8,
+    "label": "7RYq…3SaB"
+   },
+   {
+    "pct": 2.6,
+    "label": "RP8A…C21g"
+   },
+   {
+    "pct": 2.4,
+    "label": "YWGV…zRis"
+   },
+   {
+    "pct": 2.2,
+    "label": "92w5…eHgZ"
+   },
+   {
+    "pct": 2.0,
+    "label": "GMQ3…tQHR"
+   },
+   {
+    "pct": 1.9,
+    "label": "QdAQ…YFgi"
+   },
+   {
+    "pct": 1.8,
+    "label": "3241…H14i"
+   },
+   {
+    "pct": 1.6,
+    "label": "uczP…iTug"
+   },
+   {
+    "pct": 1.5,
+    "label": "CZL5…hckU"
+   },
+   {
+    "pct": 1.4,
+    "label": "ksaH…1w2U"
+   },
+   {
+    "pct": 1.3,
+    "label": "oFdy…Duub"
+   },
+   {
+    "pct": 1.2,
+    "label": "zj5y…HK4n"
+   },
+   {
+    "pct": 1.1,
+    "label": "qQMr…q41P"
+   }
+  ]
+ },
+ "team": {
+  "tiles": [
+   {
+    "lb": "Wallets tied",
+    "v": "3",
+    "sub": "19 addresses looked at"
+   },
+   {
+    "lb": "Team holds now",
+    "v": "7.4%",
+    "sub": "of the $BRISK supply",
+    "warn": true
+   },
+   {
+    "lb": "Taken out",
+    "v": "-1.68 SOL",
+    "sub": "sold minus bought, team wallets"
+   },
+   {
+    "lb": "To exchanges",
+    "v": "0 SOL",
+    "sub": "none seen"
+   },
+   {
+    "lb": "Shared funders",
+    "v": "0",
+    "sub": "none found"
+   }
+  ],
+  "findings": [
+   {
+    "tone": "bad",
+    "title": "The dev sold 5.1% of the supply in the first minute",
+    "text": "Dev ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj bought 5.1% for 1.62 SOL and sold 5.1% for 1.98 SOL; it holds 0% now.",
+    "ev": "ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj"
+   },
+   {
+    "tone": "bad",
+    "title": "1 wallet bought with the dev at launch: 9.0% of the supply, 7.4% still held",
+    "text": "It paid 2.9 SOL and has taken out 0.6 SOL (sold 1.6%).",
+    "ev": "euzaTuyZ9bAaZ2xVrCf1rtACAXgo8c4MkaacXsr7yc4G"
+   },
+   {
+    "tone": "bad",
+    "title": "The dev and the launch-slot wallet bought the same 4 other coins in the same second (last 30 days)",
+    "text": "One operator buying with several wallets looks like this.",
+    "ev": "ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj · euzaTuyZ9bAaZ2xVrCf1rtACAXgo8c4MkaacXsr7yc4G"
+   }
+  ],
+  "wallets": [
+   {
+    "roles": [
+     "dev"
+    ],
+    "main": true,
+    "address": "ufXjPAcc921toi7ap9UxDuxE2HEKZGqeMHbTv94pPzWj",
+    "sol": "8.214",
+    "held": "0%",
+    "heldSub": "0",
+    "traded": "bought 5.1% · sold 5.1%",
+    "tradedSub": "1.62 → 1.98 SOL · in at +0 s",
+    "funded": "—",
+    "exchanges": "none seen",
+    "launches": "11",
+    "launchesSub": "0 bonded",
+    "flags": [
+     {
+      "t": "sold 5.1% of supply in the first minute",
+      "tone": "bad"
+     },
+     {
+      "t": "sold everything",
+      "tone": "bad"
+     },
+     {
+      "t": "launched 11 coins"
+     }
+    ],
+    "bad": true,
+    "details": [
+     [
+      "Biggest sells",
+      "1.98 SOL · 5.1% of supply · +20 s"
+     ],
+     [
+      "Notes",
+      "first funder not reached on the public RPC"
+     ]
+    ]
+   },
+   {
+    "roles": [
+     "fee recipient"
+    ],
+    "address": "DJ3r7ZVc2qz5VMgZfZDmJVZbtXZGmayyHczDvV9T8SVM",
+    "kind": "empty",
+    "sol": "0",
+    "held": "0%",
+    "heldSub": "0",
+    "traded": "never traded",
+    "funded": "—",
+    "exchanges": "none seen",
+    "launches": "0",
+    "flags": [
+     {
+      "t": "emptied (0 SOL)",
+      "tone": "warn"
+     }
+    ],
+    "details": [
+     [
+      "Notes",
+      "emptied: 0 SOL now, but it has transactions"
+     ]
+    ]
+   },
+   {
+    "roles": [
+     "bundle wallet",
+     "insider top holder"
+    ],
+    "address": "euzaTuyZ9bAaZ2xVrCf1rtACAXgo8c4MkaacXsr7yc4G",
+    "sol": "14.06",
+    "held": "7.4%",
+    "heldSub": "74,212,904",
+    "traded": "bought 9.0% · sold 1.6%",
+    "tradedSub": "2.9 → 0.6 SOL · in at +0 s",
+    "funded": "—",
+    "exchanges": "none seen",
+    "launches": "0",
+    "flags": [
+     {
+      "t": "bought in the create slot",
+      "tone": "bad"
+     },
+     {
+      "t": "holds 7.4% of supply"
+     },
+     {
+      "t": "buys the same coins as the dev",
+      "tone": "bad"
+     }
+    ],
+    "bad": true,
+    "details": [
+     [
+      "Why an insider",
+      "bought in the create slot with the dev"
+     ],
+     [
+      "Biggest sells",
+      "0.6 SOL · 1.6% of supply · +2 min"
+     ]
+    ]
+   }
+  ],
+  "foot": "Demo data · our coin database (launches, rug flags, 30-day trades) · chain archive (funders, cash-outs) · public-RPC reads. Public data only; nothing here was signed or sent."
+ },
+ "steps": [
+  {
+   "t": 0,
+   "lane": "base",
+   "name": "Address (input)",
+   "found": "a coin",
+   "status": "ok"
+  },
+  {
+   "t": 100,
+   "lane": "base",
+   "name": "Coin on chain (launch records + mint account)",
+   "found": "$BRISK · 2 wallets bought in the create slot · 212 holders",
+   "status": "ok"
+  },
+  {
+   "t": 200,
+   "lane": "base",
+   "name": "Read the X post",
+   "found": "@demo_briskagent · 1 link",
+   "status": "ok"
+  },
+  {
+   "t": 250,
+   "lane": "base",
+   "name": "Dev wallet record",
+   "found": "11 coins in 30 days · 0 bonded",
+   "status": "ok"
+  },
+  {
+   "t": 400,
+   "lane": "base",
+   "name": "Real holders on chain + locked tokens",
+   "found": "20 top holders read · no locks",
+   "status": "ok"
+  },
+  {
+   "t": 2100,
+   "lane": "base",
+   "name": "Public surface: coin metadata",
+   "found": "website brisk.example · X post",
+   "status": "ok"
+  },
+  {
+   "t": 8400,
+   "lane": "base",
+   "name": "First read: claims + a first verdict",
+   "found": "3 claims to check · first call LIKELY LARP 30",
+   "status": "ok"
+  },
+  {
+   "t": 8900,
+   "lane": "hands",
+   "name": "Sandbox browser: first visit",
+   "found": "2 buttons pressed · 38 requests",
+   "status": "ok"
+  },
+  {
+   "t": 15300,
+   "lane": "hands",
+   "name": "Network watch, 60 s",
+   "found": "0 API calls · no websocket",
+   "status": "warn"
+  },
+  {
+   "t": 16100,
+   "lane": "web",
+   "name": "Fetched the GitHub repo",
+   "found": "1 commit · README only",
+   "status": "warn"
+  },
+  {
+   "t": 22000,
+   "lane": "web",
+   "name": "Web search",
+   "found": "brisk ai agent solana",
+   "status": "ok"
+  },
+  {
+   "t": 24800,
+   "lane": "base",
+   "name": "Team wallets: every wallet tied to the project",
+   "found": "3 wallets · 3 findings",
+   "status": "ok"
+  },
+  {
+   "t": 45200,
+   "lane": "base",
+   "name": "Teardown: the project part by part",
+   "found": "Claims: broken · Website: broken · Team wallets: risky",
+   "status": "ok"
+  },
+  {
+   "t": 61900,
+   "lane": "base",
+   "name": "Final verdict",
+   "found": "LIKELY LARP 24 (story 18, holders 41 SKETCHY)",
+   "status": "ok"
+  }
+ ],
+ "side": {
+  "coin": {
+   "stamp": "SKETCHY",
+   "score": 41,
+   "line": "212 holders, top 10 hold 29%, insiders 7.4%, 38 min old",
+   "kv": [
+    [
+     "coin",
+     "$BRISK",
+     "https://solscan.io/token/9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump"
+    ],
+    [
+     "launched",
+     "38m ago"
+    ],
+    [
+     "holders",
+     "212"
+    ],
+    [
+     "top 10 hold",
+     "28.9%"
+    ],
+    [
+     "bundle",
+     "9.0%"
+    ],
+    [
+     "market cap",
+     "$18.2K"
+    ],
+    [
+     "peak",
+     "$41.0K · 56% off"
+    ],
+    [
+     "bonded",
+     "no"
+    ],
+    [
+     "dev wallet",
+     "ufXj…PzWj"
+    ],
+    [
+     "dev record",
+     "11 coins · 0 bonded"
+    ],
+    [
+     "mint / freeze",
+     "mint off · freeze off"
+    ]
+   ],
+   "why": [
+    [
+     -9,
+     "dev sold 100% of his launch buy"
+    ],
+    [
+     -7,
+     "one wallet bought 9% in the create slot"
+    ],
+    [
+     -6,
+     "fresh coin: 38 min old, not bonded"
+    ]
+   ]
+  },
+  "who": [
+   [
+    "site",
+    "brisk.example",
+    "https://brisk.example/"
+   ],
+   [
+    "X account",
+    "@demo_briskagent",
+    "https://x.com/"
+   ],
+   [
+    "joined X",
+    "9 days ago"
+   ]
+  ],
+  "check": [
+   [
+    "opened",
+    "today"
+   ],
+   [
+    "first verdict",
+    "8 s"
+   ],
+   [
+    "finished",
+    "1 min 2 s"
+   ],
+   [
+    "hands-on",
+    "1 visit · 0 wallet requests"
+   ],
+   [
+    "web",
+    "2 searches · 1 page"
+   ],
+   [
+    "mode",
+    "demo data"
+   ],
+   [
+    "input",
+    "9KTAb8dLcukC7edhDQ7cn5d4gEYkbUrMWeWQLGsCpump"
+   ]
+  ]
+ }
+}
